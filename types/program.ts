@@ -15,5 +15,5 @@ export interface Program {
     coach: string;
     visibility: 'PUBLIC' | 'PRIVATE' | 'TEAM_ONLY';
     recurring: boolean;
-    sessions: Session[];
+    session: Session[];
 }
