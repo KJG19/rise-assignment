@@ -1,0 +1,53 @@
+Ai Prompts
+
+How to create a new page at using dynamic routing?
+- I have not used dynamic routing so I had to ask to find out
+
+It showed me file formatting so I knew how to create a dynamic routed page.
+
+
+Error: Route "/programs/[id]" used params.id. params should be awaited before using its properties. 
+Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ProgramPage (app\programs\[id]\page.tsx:9:74)
+   7 | export default async function ProgramPage({ params }: PageProps){
+   8 |     const response = await fetch (
+>  9 |         https://672d2f78fd8979715641a684.mockapi.io/information/${params.id}
+     |                                                                          ^
+  10 |     )
+  11 |
+  12 |     const program: Program = await response.json()
+
+why do i get this error?
+The output it gave helped me fix the error in the code, it declared params as a promise so that it made it an async function.
+
+<div>
+ <ul>
+ {program.sessions.map((s, i) => (<li key={i}>{s.date} @ {s.time}</li>))}
+ </ul>
+</div>
+
+this wont display
+
+The output helped me change sessions to session since it was giving me an error related to session tokens
+
+
+Include a loading state while fetching data.
+This was used to figure out the loading state function. 
+I thought it was something related to useState but when I asked it was a second file 
+called loading to have a loading state while the program fetched data to display.
+
+can you make it so the loading screen stays for a second
+The output helped me put in a delay so you can see the 
+loading screen rather then it show up and you don't see it. 
+Implemented this delay to show I had the loading state.
+
+I then put the whole take home assignment instructions into ai and asked if it met 
+all the requirements, it reminded me to add a button that doesn't function. 
+
+
+How to add functionality to the button.
+- I would add a onClick function to it, from there that would 
+take me to the /programs/[id]/edit. On that screen I would create a form 
+that allows the user to edit the fields. When you are done editing there 
+would be a PUT request to an API that updates the program data. Then upon 
+submission it will return the user to the page to see all the live updates.
