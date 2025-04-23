@@ -4,13 +4,19 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export default async function ProgramPage({ params }: PageProps) {
   const { id } = await params;
 
-  const response = await fetch(
-    `https://672d2f78fd8979715641a684.mockapi.io/information/${id}`
-  );
+  const [response] = await Promise.all([
+    fetch(`https://672d2f78fd8979715641a684.mockapi.io/information/${id}`, {
+      next: { revalidate: 60 },
+    }),
+    delay(1000),
+  ]);
 
+  if (!response.ok) throw new Error("Program not found");
   const program: Program = await response.json();
   const spotsLeft = program.capacity - program.registered;
 
