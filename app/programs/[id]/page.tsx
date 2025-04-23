@@ -44,6 +44,12 @@ export default async function ProgramPage({ params }: PageProps) {
         </span>
       </div>
 
+      <div>
+        <button className="inline-block px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm rounded-full">
+          Edit Program
+        </button>
+      </div>
+
       <div className="bg-white  rounded-2xl shadow p-4 grid grid-cols-2 gap-4">
         <div className="text-center">
           <div className="text-2xl font-bold text-gray-900 ">
